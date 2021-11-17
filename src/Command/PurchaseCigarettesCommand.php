@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Change\BaseChange;
 use App\Exception\IncorrectInputException;
 use App\Machine\CigaretteMachine;
 use App\Machine\PurchaseTransaction;
@@ -48,7 +49,7 @@ class PurchaseCigarettesCommand extends Command
 
             // $cigaretteMachine = new CigaretteMachine();
             // ...
-            $cigaretteMachine = new CigaretteMachine();
+            $cigaretteMachine = new CigaretteMachine(new BaseChange());
             $item             = $cigaretteMachine->execute(new PurchaseTransaction($itemCount, $amount));
 
             $output->writeln('You bought <info>'.$item->getItemQuantity().'</info> packs of cigarettes for <info>'.$item->getTotalAmount().'</info>, each for <info>'.CigaretteMachine::ITEM_PRICE.'</info>. ');

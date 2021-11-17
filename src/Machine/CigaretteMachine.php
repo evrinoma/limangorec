@@ -2,9 +2,7 @@
 
 namespace App\Machine;
 
-use App\Change\BaseChange;
-use App\Change\HalfCoin;
-use App\Change\OneCoin;
+use App\Change\IChange;
 
 /**
  * Class CigaretteMachine
@@ -17,9 +15,19 @@ class CigaretteMachine implements MachineInterface
     const ITEM_PRICE = 4.99;
 //endregion Fields
 
+//region SECTION: Constructor
+    /**
+     * @var IChange
+     */
+    private $change;
+
+    public function __construct(IChange $change)
+    {
+        $this->change = $change;
+    }
+//endregion Constructor
+
 //region SECTION: Public
-
-
     /**
      * @param PurchaseTransactionInterface $purchaseTransaction
      *
@@ -39,10 +47,10 @@ class CigaretteMachine implements MachineInterface
 //region SECTION: Private
     private function calcChange($paidAmount, $totalAmount)
     {
-        $base = new BaseChange();
-        $base->init($paidAmount - $totalAmount);
+      //  $base = new BaseChange();
+        $this->change->init($paidAmount - $totalAmount);
 
-        return $base->next()->getChange();
+        return $this->change->next()->getChange();
     }
 //endregion Private
 }
