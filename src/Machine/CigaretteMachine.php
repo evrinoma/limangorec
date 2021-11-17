@@ -13,14 +13,13 @@ class CigaretteMachine implements MachineInterface
 {
 //region SECTION: Fields
     const ITEM_PRICE = 4.99;
-//endregion Fields
-
-//region SECTION: Constructor
     /**
      * @var IChange
      */
     private $change;
+//endregion Fields
 
+//region SECTION: Constructor
     public function __construct(IChange $change)
     {
         $this->change = $change;

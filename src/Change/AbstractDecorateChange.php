@@ -37,8 +37,8 @@ abstract class AbstractDecorateChange implements IChange
     public function calc()
     {
         $difference = $this->base->getDifference();
-        $coinCount = 0;
-        $value = $this->getValue();
+        $coinCount  = 0;
+        $value      = $this->getValue();
         while (bccomp($difference, $value, 2) >= 0) {
             $coinCount++;
             $difference -= $value;
@@ -48,12 +48,6 @@ abstract class AbstractDecorateChange implements IChange
         $this->addChange($coinCount);
 
         $this->next();
-    }
-
-
-    public function getValue()
-    {
-        return static::VALUE;
     }
 
     /**
@@ -84,6 +78,11 @@ abstract class AbstractDecorateChange implements IChange
 //endregion Public
 
 //region SECTION: Getters/Setters
+    public function getValue()
+    {
+        return static::VALUE;
+    }
+
     public function getDifference()
     {
         return $this->difference;

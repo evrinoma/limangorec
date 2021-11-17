@@ -4,10 +4,12 @@ namespace App\Machine;
 
 /**
  * Interface PurchasedItemInterface
+ *
  * @package App\Machine
  */
 interface PurchasedItemInterface
 {
+//region SECTION: Getters/Setters
     /**
      * @return integer
      */
@@ -29,4 +31,5 @@ interface PurchasedItemInterface
      * @return array
      */
     public function getChange();
+//endregion Getters/Setters
 }

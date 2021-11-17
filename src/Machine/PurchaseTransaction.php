@@ -33,6 +33,19 @@ class PurchaseTransaction implements PurchaseTransactionInterface
     }
 //endregion Constructor
 
+//region SECTION: Private
+    private function validate()
+    {
+        if ($this->amount <= 0) {
+            throw new NotEnoughException();
+        }
+
+        if ($this->amount < $this->itemCount * CigaretteMachine::ITEM_PRICE) {
+            throw new InsufficientFundException();
+        }
+    }
+//endregion Private
+
 //region SECTION: Getters/Setters
     public function getItemQuantity()
     {
@@ -44,14 +57,4 @@ class PurchaseTransaction implements PurchaseTransactionInterface
         return $this->amount;
     }
 //endregion Getters/Setters
-
-    private function validate() {
-        if ($this->amount <= 0) {
-            throw new NotEnoughException();
-        }
-
-        if ($this->amount < $this->itemCount * CigaretteMachine::ITEM_PRICE) {
-            throw new InsufficientFundException();
-        }
-    }
 }

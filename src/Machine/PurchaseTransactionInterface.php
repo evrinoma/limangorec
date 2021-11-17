@@ -4,10 +4,12 @@ namespace App\Machine;
 
 /**
  * Interface PurchasableItemInterface
+ *
  * @package App\Machine
  */
 interface PurchaseTransactionInterface
 {
+//region SECTION: Getters/Setters
     /**
      * @return integer
      */
@@ -17,4 +19,5 @@ interface PurchaseTransactionInterface
      * @return float
      */
     public function getPaidAmount();
+//endregion Getters/Setters
 }
