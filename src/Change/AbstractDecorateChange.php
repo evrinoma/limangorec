@@ -46,7 +46,6 @@ abstract class AbstractDecorateChange implements IChange
         }
         $this->setDifference($difference);
         $this->addChange($coinCount);
-      //  $this->setChange($this->change);
 
         $this->next();
     }

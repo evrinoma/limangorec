@@ -47,7 +47,6 @@ class CigaretteMachine implements MachineInterface
 //region SECTION: Private
     private function calcChange($paidAmount, $totalAmount)
     {
-      //  $base = new BaseChange();
         $this->change->init($paidAmount - $totalAmount);
 
         return $this->change->next()->getChange();
