@@ -71,7 +71,6 @@ class PurchaseCigarettesCommand extends Command
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
         }
-
     }
 //endregion Protected
 }
