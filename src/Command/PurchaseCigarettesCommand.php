@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Change\BaseChange;
+use App\CoinExchange\BaseChange;
 use App\Exception\IncorrectInputException;
 use App\Machine\CigaretteMachine;
 use App\Machine\PurchaseTransaction;

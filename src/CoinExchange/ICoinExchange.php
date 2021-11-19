@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Change;
+namespace App\CoinExchange;
 
 interface ICoinExchange
 {
 //region SECTION: Public
     public function next();
- //   public function getPrecision();
 //endregion Public
 
 //region SECTION: Getters/Setters

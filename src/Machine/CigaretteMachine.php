@@ -2,7 +2,7 @@
 
 namespace App\Machine;
 
-use App\Change\ICoinExchange;
+use App\CoinExchange\ICoinExchange;
 
 /**
  * Class CigaretteMachine

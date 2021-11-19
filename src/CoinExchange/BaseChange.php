@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Change;
+namespace App\CoinExchange;
+
+use App\CoinExchange\Nominal\OneCoin;
 
 class BaseChange extends AbstractCoinExchange
 {

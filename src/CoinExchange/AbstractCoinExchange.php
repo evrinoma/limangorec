@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Change;
+namespace App\CoinExchange;
 
 abstract class AbstractCoinExchange implements ICoinExchange
 {
 //region SECTION: Fields
     const VALUE     = 0;
+    /**
+     * @deprecated
+     */
     const PRECISION = 1;
     protected $difference = 0;
     protected $change     = [];
@@ -36,11 +39,10 @@ abstract class AbstractCoinExchange implements ICoinExchange
     //abstract protected function getPrecision();
 
 //region SECTION: Public
-
     public function calc()
     {
         $difference = $this->base->getDifference();
-
+        ;
         /**
          * @TODO escape loop float operation here
          */
@@ -50,12 +52,12 @@ abstract class AbstractCoinExchange implements ICoinExchange
 //            $difference -= $value;
 //            $difference = round($difference, 2);
 //        }
-
-        $value      = $this->getValue();
-        $valueP     = $value * $this->getPrecision();
-        $differenceP = (float)bcmul($difference, $this->getPrecision(), 2);
-        $coinCount = (int)($differenceP / $valueP);
-        $difference = (float)bcsub($difference, bcmul($coinCount, $value, 2), 2);
+        $precision   = $this->calcPrecision();
+        $value       = $this->getValue();
+        $valueP      = $value * $precision;
+        $differenceP = (float)bcmul($difference, $precision, 2);
+        $coinCount   = (int)($differenceP / $valueP);
+        $difference  = (float)bcsub($difference, bcmul($coinCount, $value, 2), 2);
 
         $this->setDifference($difference);
         $this->addChange($coinCount);
@@ -93,6 +95,20 @@ abstract class AbstractCoinExchange implements ICoinExchange
 //endregion Public
 
 //region SECTION: Private
+    private function calcPrecision()
+    {
+        $explodeDigits   = explode('.', (string)static::VALUE);
+        $precisionPow       = strlen((string)$explodeDigits[1]);
+
+        return pow(10, $precisionPow);
+
+//        return $this->getPrecision();
+    }
+
+    /**
+     * @deprecated 
+     * @return int
+     */
     private function getPrecision()
     {
         return static::PRECISION;

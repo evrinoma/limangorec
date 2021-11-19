@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Change;
+namespace App\CoinExchange\Nominal;
+
+use App\CoinExchange\AbstractCoinExchange;
 
 class TenthCoin extends AbstractCoinExchange
 {
