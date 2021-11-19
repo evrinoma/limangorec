@@ -34,6 +34,9 @@ abstract class AbstractCoinExchange implements ICoinExchange
 //endregion Protected
 
 //region SECTION: Public
+    /**
+     * @TODO escape float operation here
+     */
     public function calc()
     {
         $difference = $this->base->getDifference();

@@ -28,6 +28,8 @@ class CigaretteMachine implements MachineInterface
 
 //region SECTION: Public
     /**
+     * @TODO should looks like machine it's not a calculator
+     *
      * @param PurchaseTransactionInterface $purchaseTransaction
      *
      * @return PurchasedItemInterface

@@ -34,6 +34,10 @@ class PurchaseTransaction implements PurchaseTransactionInterface
 //endregion Constructor
 
 //region SECTION: Private
+
+    /**
+     * @TODO split system on two separated logic - constraints and validator
+     */
     private function validate()
     {
         if ($this->amount <= 0) {

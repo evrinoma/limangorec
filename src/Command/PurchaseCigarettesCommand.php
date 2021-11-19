@@ -49,6 +49,9 @@ class PurchaseCigarettesCommand extends Command
 
             // $cigaretteMachine = new CigaretteMachine();
             // ...
+            /**
+             * @TODO think about flexible organisation (factories, validators, constraints and etc) and transaction model
+             */
             $cigaretteMachine = new CigaretteMachine(new BaseChange());
             $item             = $cigaretteMachine->execute(new PurchaseTransaction($itemCount, $amount));
 
