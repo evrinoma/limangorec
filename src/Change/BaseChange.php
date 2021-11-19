@@ -2,7 +2,7 @@
 
 namespace App\Change;
 
-class BaseChange extends AbstractDecorateChange
+class BaseChange extends AbstractCoinExchange
 {
 //region SECTION: Protected
     protected function getNext()

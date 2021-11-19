@@ -2,7 +2,7 @@
 
 namespace App\Change;
 
-class OneCoin extends AbstractDecorateChange
+class OneCoin extends AbstractCoinExchange
 {
 //region SECTION: Fields
     const VALUE = 1;

@@ -2,7 +2,7 @@
 
 namespace App\Machine;
 
-use App\Change\IChange;
+use App\Change\ICoinExchange;
 
 /**
  * Class CigaretteMachine
@@ -14,13 +14,13 @@ class CigaretteMachine implements MachineInterface
 //region SECTION: Fields
     const ITEM_PRICE = 4.99;
     /**
-     * @var IChange
+     * @var ICoinExchange
      */
     private $change;
 //endregion Fields
 
 //region SECTION: Constructor
-    public function __construct(IChange $change)
+    public function __construct(ICoinExchange $change)
     {
         $this->change = $change;
     }

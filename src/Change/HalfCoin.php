@@ -2,7 +2,7 @@
 
 namespace App\Change;
 
-class HalfCoin extends AbstractDecorateChange
+class HalfCoin extends AbstractCoinExchange
 {
 //region SECTION: Fields
     const VALUE = 0.5;

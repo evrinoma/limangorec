@@ -2,7 +2,7 @@
 
 namespace App\Change;
 
-interface IChange
+interface ICoinExchange
 {
 //region SECTION: Public
     public function next();

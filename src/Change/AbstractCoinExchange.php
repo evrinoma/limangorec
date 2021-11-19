@@ -2,27 +2,27 @@
 
 namespace App\Change;
 
-abstract class AbstractDecorateChange implements IChange
+abstract class AbstractCoinExchange implements ICoinExchange
 {
 //region SECTION: Fields
     const VALUE = 0;
     protected $difference = 0;
     protected $change     = [];
     /**
-     * @var IChange
+     * @var ICoinExchange
      */
     protected $save;
     /**
-     * @var IChange
+     * @var ICoinExchange
      */
     private $base;
 //endregion Fields
 
 //region SECTION: Constructor
     /**
-     * @param IChange $base
+     * @param ICoinExchange $base
      */
-    public function __construct(IChange $base = null)
+    public function __construct(ICoinExchange $base = null)
     {
         $this->base = $base;
         $this->save = ($base) ? $this->base->getSave() : null;
@@ -97,7 +97,7 @@ abstract class AbstractDecorateChange implements IChange
     }
 
     /**
-     * @return IChange
+     * @return ICoinExchange
      */
     public function getSave()
     {
