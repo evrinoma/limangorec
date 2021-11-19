@@ -106,7 +106,7 @@ abstract class AbstractCoinExchange implements ICoinExchange
     }
 
     /**
-     * @deprecated 
+     * @deprecated
      * @return int
      */
     private function getPrecision()
