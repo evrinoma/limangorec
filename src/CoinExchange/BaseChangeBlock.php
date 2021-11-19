@@ -4,7 +4,7 @@ namespace App\CoinExchange;
 
 use App\CoinExchange\Nominal\OneCoin;
 
-class BaseChange extends AbstractCoinExchange
+class BaseChangeBlock extends AbstractCoinExchange
 {
 //region SECTION: Protected
     protected function getNext()
