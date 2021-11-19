@@ -2,7 +2,7 @@
 
 namespace App\Machine;
 
-use App\CoinExchange\ICoinExchange;
+use App\Vending\ConfigurationInterface;
 
 /**
  * Class CigaretteMachine
@@ -14,15 +14,15 @@ class CigaretteMachine implements MachineInterface
 //region SECTION: Fields
     const ITEM_PRICE = 4.99;
     /**
-     * @var ICoinExchange
+     * @var ConfigurationInterface
      */
-    private $change;
+    private $configuration;
 //endregion Fields
 
 //region SECTION: Constructor
-    public function __construct(ICoinExchange $change)
+    public function __construct(ConfigurationInterface $configuration)
     {
-        $this->change = $change;
+        $this->configuration = $configuration;
     }
 //endregion Constructor
 
@@ -39,16 +39,9 @@ class CigaretteMachine implements MachineInterface
         $paidAmount   = $purchaseTransaction->getPaidAmount();
         $itemQuantity = $purchaseTransaction->getItemQuantity();
         $totalAmount  = $itemQuantity * self::ITEM_PRICE;
-        $change       = $this->getChange($paidAmount-$totalAmount);
+        $change       = $this->configuration->changeBlock()->init($paidAmount - $totalAmount)->next()->getChange();
 
         return new PurchasedItem($itemQuantity, $totalAmount, $change);
     }
 //endregion Public
-
-//region SECTION: Private
-    private function getChange($change)
-    {
-        return $this->change->init($change)->next()->getChange();
-    }
-//endregion Private
 }
