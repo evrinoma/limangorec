@@ -19,7 +19,7 @@ class MachineConfiguration implements ConfigurationInterface
     /**
      * @return CoinExchangeInterface
      */
-    public function changeBlock(): CoinExchangeInterface
+    public function changeBlock()
     {
         return $this->changeBlock;
     }
