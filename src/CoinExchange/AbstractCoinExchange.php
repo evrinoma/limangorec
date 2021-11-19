@@ -2,7 +2,7 @@
 
 namespace App\CoinExchange;
 
-abstract class AbstractCoinExchange implements ICoinExchange
+abstract class AbstractCoinExchange implements CoinExchangeInterface
 {
 //region SECTION: Fields
     const VALUE     = 0;
@@ -13,20 +13,20 @@ abstract class AbstractCoinExchange implements ICoinExchange
     protected $difference = 0;
     protected $change     = [];
     /**
-     * @var ICoinExchange
+     * @var CoinExchangeInterface
      */
     protected $save;
     /**
-     * @var ICoinExchange
+     * @var CoinExchangeInterface
      */
     private $base;
 //endregion Fields
 
 //region SECTION: Constructor
     /**
-     * @param ICoinExchange $base
+     * @param CoinExchangeInterface $base
      */
-    public function __construct(ICoinExchange $base = null)
+    public function __construct(CoinExchangeInterface $base = null)
     {
         $this->base = $base;
         $this->save = ($base) ? $this->base->getSave() : null;
@@ -135,7 +135,7 @@ abstract class AbstractCoinExchange implements ICoinExchange
     }
 
     /**
-     * @return ICoinExchange
+     * @return CoinExchangeInterface
      */
     public function getSave()
     {

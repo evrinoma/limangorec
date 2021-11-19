@@ -2,7 +2,7 @@
 
 namespace App\CoinExchange;
 
-interface ICoinExchange
+interface CoinExchangeInterface
 {
 //region SECTION: Public
     public function next();
