@@ -37,14 +37,14 @@ class CigaretteMachine implements MachineInterface
         $paidAmount   = $purchaseTransaction->getPaidAmount();
         $itemQuantity = $purchaseTransaction->getItemQuantity();
         $totalAmount  = $itemQuantity * self::ITEM_PRICE;
-        $change       = $this->calcChange($paidAmount, $totalAmount);
+        $change       = $this->getChange($paidAmount, $totalAmount);
 
         return new PurchasedItem($itemQuantity, $totalAmount, $change);
     }
 //endregion Public
 
 //region SECTION: Private
-    private function calcChange($paidAmount, $totalAmount)
+    private function getChange($paidAmount, $totalAmount)
     {
         $this->change->init($paidAmount - $totalAmount);
 
