@@ -5,7 +5,8 @@ namespace App\Change;
 abstract class AbstractCoinExchange implements ICoinExchange
 {
 //region SECTION: Fields
-    const VALUE = 0;
+    const VALUE     = 0;
+    const PRECISION = 1;
     protected $difference = 0;
     protected $change     = [];
     /**
@@ -32,21 +33,30 @@ abstract class AbstractCoinExchange implements ICoinExchange
 //region SECTION: Protected
     abstract protected function getNext();
 //endregion Protected
+    //abstract protected function getPrecision();
 
 //region SECTION: Public
-    /**
-     * @TODO escape float operation here
-     */
+
     public function calc()
     {
         $difference = $this->base->getDifference();
-        $coinCount  = 0;
+
+        /**
+         * @TODO escape loop float operation here
+         */
+//        $coinCount  = 0;
+//        while (bccomp($difference, $value, 2) >= 0) {
+//            $coinCount++;
+//            $difference -= $value;
+//            $difference = round($difference, 2);
+//        }
+
         $value      = $this->getValue();
-        while (bccomp($difference, $value, 2) >= 0) {
-            $coinCount++;
-            $difference -= $value;
-            $difference = round($difference, 2);
-        }
+        $valueP     = $value * $this->getPrecision();
+        $differenceP = (float)bcmul($difference, $this->getPrecision(), 2);
+        $coinCount = (int)($differenceP / $valueP);
+        $difference = (float)bcsub($difference, bcmul($coinCount, $value, 2), 2);
+
         $this->setDifference($difference);
         $this->addChange($coinCount);
 
@@ -81,6 +91,13 @@ abstract class AbstractCoinExchange implements ICoinExchange
         return $this;
     }
 //endregion Public
+
+//region SECTION: Private
+    private function getPrecision()
+    {
+        return static::PRECISION;
+    }
+//endregion Private
 
 //region SECTION: Getters/Setters
     public function getValue()

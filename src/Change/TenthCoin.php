@@ -6,6 +6,7 @@ class TenthCoin extends AbstractCoinExchange
 {
 //region SECTION: Fields
     const VALUE = 0.1;
+    const PRECISION = 10;
 //endregion Fields
 
 //region SECTION: Protected
