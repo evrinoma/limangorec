@@ -74,6 +74,8 @@ abstract class AbstractCoinExchange implements ICoinExchange
     {
         $this->setDifference($difference);
         $this->save = &$this;
+
+        return $this;
     }
 //endregion Public
 
